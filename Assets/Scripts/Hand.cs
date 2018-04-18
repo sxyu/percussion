@@ -48,7 +48,8 @@ public class Hand : MonoBehaviour {
 		stick.transform.localPosition = holdPosition;
 		stick.transform.localEulerAngles = holdRotation;
 		stick.GetComponent<Rigidbody>().useGravity = false;
-		stick.GetComponent<Rigidbody>().isKinematic = true;
+		//stick.GetComponent<Rigidbody> ().freezeRotation = true;
+		//stick.GetComponent<Rigidbody>().isKinematic = true;
 	}
 
 	void Release() {
@@ -57,7 +58,7 @@ public class Hand : MonoBehaviour {
 		Rigidbody rigidbody = stick.GetComponent<Rigidbody>();
 
 		rigidbody.useGravity = true;
-		rigidbody.isKinematic = false;
+		//rigidbody.isKinematic = false;
 		rigidbody.velocity = OVRInput.GetLocalControllerVelocity(controller);
 
 		holdingStick = false;
