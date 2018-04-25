@@ -124,6 +124,7 @@
      <Compile Include="Assets\Scripts\Drumstick.cs" />
      <Compile Include="Assets\Scripts\Hand.cs" />
      <Compile Include="Assets\Scripts\TeleportPoint.cs" />
+     <Compile Include="Assets\Scripts\TeleportRay.cs" />
      <None Include="Assets\OvrAvatar\Content\Materials\AvatarMaterialStateShader.cginc" />
      <None Include="Assets\OVR\Resources\OVRMRUnlitTransparent.shader" />
      <None Include="Assets\OVR\Resources\OVRMRChromaKey.cginc" />
@@ -143,9 +144,6 @@
      <None Include="Assets\OVR\Resources\OVRMRClipPlane.shader" />
      <None Include="Assets\OVR\Resources\Underlay Impostor.shader" />
      <None Include="Assets\OVR\Plugins\placeholder.txt" />
- <Reference Include="Assembly-CSharp-firstpass">
- <HintPath>E:/Unity/VR Decal/Percussion Simulators/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -245,6 +243,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/ayu/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1150EFAC-212D-17C0-3F78-A0757A8D0041}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
