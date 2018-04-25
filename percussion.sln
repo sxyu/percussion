@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "percussion", "Assembly-CSharp.csproj", "{0AD7FCE6-E914-31B2-79F4-FBECDE988DE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "percussion", "Assembly-CSharp-firstpass.csproj", "{ACDA38EC-314B-2EC0-8EB5-D041AA800C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "percussion", "Assembly-CSharp-Editor-firstpass.csproj", "{EA2D1B23-4281-3250-41F3-DED0BAB80DDC}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "percussion", "Assembly-CSharp-Editor.csproj", "{6B6C6628-BDFB-BF92-AA44-9CAC67499A38}"
 EndProject
 Global
@@ -15,6 +19,14 @@ Global
 		{0AD7FCE6-E914-31B2-79F4-FBECDE988DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD7FCE6-E914-31B2-79F4-FBECDE988DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD7FCE6-E914-31B2-79F4-FBECDE988DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDA38EC-314B-2EC0-8EB5-D041AA800C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDA38EC-314B-2EC0-8EB5-D041AA800C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDA38EC-314B-2EC0-8EB5-D041AA800C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDA38EC-314B-2EC0-8EB5-D041AA800C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2D1B23-4281-3250-41F3-DED0BAB80DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2D1B23-4281-3250-41F3-DED0BAB80DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2D1B23-4281-3250-41F3-DED0BAB80DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2D1B23-4281-3250-41F3-DED0BAB80DDC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B6C6628-BDFB-BF92-AA44-9CAC67499A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B6C6628-BDFB-BF92-AA44-9CAC67499A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B6C6628-BDFB-BF92-AA44-9CAC67499A38}.Release|Any CPU.ActiveCfg = Release|Any CPU

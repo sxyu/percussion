@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TeleportRay : MonoBehaviour {
-
+	public OVRInput.Controller controller;
     public int numPoints = 50;
     public float resolution = 0.1f;
     public float gravity = 0.05f;
@@ -17,10 +17,10 @@ public class TeleportRay : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-        if (Input.GetMouseButton(0))
+		if (OVRInput.Get(OVRInput.Button.Two, controller))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Vector3 a = Camera.main.transform.position + offset;
+			Ray ray = new Ray(transform.position, transform.rotation * Vector3.up);
+            Vector3 a = transform.position + offset;
             Vector3 b = ray.GetPoint(resolution) + offset;
             Vector3 delta = b - a;
 
@@ -29,11 +29,10 @@ public class TeleportRay : MonoBehaviour {
 
             float ressqr = delta.x * delta.x + delta.z * delta.z;
 
-            AnimationCurve curve = new AnimationCurve();
+            //AnimationCurve curve = new AnimationCurve();
 
-
-            curve.AddKey(0.0f, 1.0f);
-            curve.AddKey(1.0f, 1.0f);
+            //curve.AddKey(0.0f, 1.0f);
+            //curve.AddKey(1.0f, 1.0f);
 
             for (int i = 2; i < numPoints; ++i)
             {
@@ -42,16 +41,16 @@ public class TeleportRay : MonoBehaviour {
                 v.z = a.z + i * delta.z;
                 v.y = a.y + i * delta.y - i * i * ressqr * gravity;
                 pos[i] = v;
-                curve.AddKey(i, Vector3.Distance(v, a) / 1000.0f);
+                //curve.AddKey(i, Vector3.Distance(v, a) / 1000.0f);
             }
             lineRenderer.positionCount = numPoints;
-            lineRenderer.widthCurve = curve;
+            //lineRenderer.widthCurve = curve;
             lineRenderer.SetPositions(pos);
         }
         else
         {
-            //lineRenderer.positionCount = 0;
-            //lineRenderer.SetPositions(new Vector3[]{ });
+            lineRenderer.positionCount = 0;
+            lineRenderer.SetPositions(new Vector3[]{ });
         }
     }
 }

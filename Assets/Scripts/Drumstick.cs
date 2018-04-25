@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Drumstick : MonoBehaviour {
 
+	public enum HandType{
+		none = 0, left, right
+	}
+
+	public HandType handController = HandType.none; 
+
 	// Use this for initialization
 	void Start () {
 		

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour {
 	public OVRInput.Controller controller;
+	public bool isLeftHand;
 
 	private float indexTriggerState = 0;
 	private float handTriggerState = 0;
@@ -48,7 +49,7 @@ public class Hand : MonoBehaviour {
 		stick.transform.localPosition = holdPosition;
 		stick.transform.localEulerAngles = holdRotation;
 		stick.GetComponent<Rigidbody>().useGravity = false;
-		//stick.GetComponent<Rigidbody> ().freezeRotation = true;
+		stick.GetComponent<Drumstick> ().handController = isLeftHand ? Drumstick.HandType.left : Drumstick.HandType.right;
 		//stick.GetComponent<Rigidbody>().isKinematic = true;
 	}
 
