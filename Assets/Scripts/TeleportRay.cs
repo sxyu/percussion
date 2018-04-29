@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TeleportRay : MonoBehaviour {
 	public OVRInput.Controller controller;
-    public int numPoints = 50;
+	public Transform avatar;
+	public Transform camera;
+    public int numPoints = 75;
     public float resolution = 0.1f;
-    public float gravity = 0.05f;
-    public Vector3 offset = new Vector3(0, 0.1f, 0);
-    private LineRenderer lineRenderer;
+    public float gravity = 0.2f;
+	public float teleportThresh = 0.6f;
+    public Vector3 offset = new Vector3(0, 0, 0);
+   
+	private LineRenderer lineRenderer;
+	private Vector3 contactPt = new Vector3(0, 0, 0);
+	private bool foundContact = false;
 
     // Use this for initialization
     void Start () {
@@ -17,9 +23,10 @@ public class TeleportRay : MonoBehaviour {
     
     // Update is called once per frame
     void Update () {
-		if (OVRInput.Get(OVRInput.Button.Two, controller))
+		if (OVRInput.Get(OVRInput.Button.One, controller))
         {
-			Ray ray = new Ray(transform.position, transform.rotation * Vector3.up);
+			foundContact = false;
+			Ray ray = new Ray(transform.position, transform.forward);
             Vector3 a = transform.position + offset;
             Vector3 b = ray.GetPoint(resolution) + offset;
             Vector3 delta = b - a;
@@ -28,12 +35,6 @@ public class TeleportRay : MonoBehaviour {
             pos[0] = a; pos[1] = b;
 
             float ressqr = delta.x * delta.x + delta.z * delta.z;
-
-            //AnimationCurve curve = new AnimationCurve();
-
-            //curve.AddKey(0.0f, 1.0f);
-            //curve.AddKey(1.0f, 1.0f);
-
             for (int i = 2; i < numPoints; ++i)
             {
                 Vector3 v;
@@ -41,16 +42,27 @@ public class TeleportRay : MonoBehaviour {
                 v.z = a.z + i * delta.z;
                 v.y = a.y + i * delta.y - i * i * ressqr * gravity;
                 pos[i] = v;
-                //curve.AddKey(i, Vector3.Distance(v, a) / 1000.0f);
+
+				if (!foundContact && v.y <= 0) {
+					foundContact = true;
+					contactPt = v;
+				}
             }
+
             lineRenderer.positionCount = numPoints;
-            //lineRenderer.widthCurve = curve;
             lineRenderer.SetPositions(pos);
         }
         else
         {
-            lineRenderer.positionCount = 0;
-            lineRenderer.SetPositions(new Vector3[]{ });
+			if (lineRenderer.positionCount > 0) {
+				lineRenderer.positionCount = 0;
+				lineRenderer.SetPositions (new Vector3[]{ });
+
+				if (foundContact) {
+					TeleportPoint.TeleportTo(avatar, contactPt, teleportThresh);
+					camera.position = avatar.position;
+				}
+			}
         }
     }
 }

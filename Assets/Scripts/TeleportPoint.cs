@@ -47,7 +47,7 @@ public class TeleportPoint : MonoBehaviour {
 
     // Teleport 'avatar' to the nearest enabled TeleportPoint to 'point'
     // if the distance between the two is below the given threshold
-    public static bool TeleportTo(Transform avatar, Vector3 point, float thresh = 0.2f)
+    public static bool TeleportTo(Transform avatar, Vector3 point, float thresh = 0.6f)
     {
         float threshL2sqr = thresh * thresh;
         float bestL2sqr = float.MaxValue;
@@ -55,7 +55,7 @@ public class TeleportPoint : MonoBehaviour {
 
         foreach (KeyValuePair<int, Vector3> entry in positions)
         {
-            float l2sqr = (point - entry.Value).sqrMagnitude;
+			float l2sqr = (point.x - entry.Value.x) * (point.x - entry.Value.x) + (point.z - entry.Value.z) * (point.z - entry.Value.z);
             if (l2sqr <= threshL2sqr && l2sqr < bestL2sqr)
             {
                 bestL2sqr = l2sqr;
@@ -64,7 +64,7 @@ public class TeleportPoint : MonoBehaviour {
         }
 
         if (bestID == -1) return false;
-        avatar.position = point;
+		avatar.position = new Vector3(point.x, avatar.position.y, point.z);
         return true;
     }
 

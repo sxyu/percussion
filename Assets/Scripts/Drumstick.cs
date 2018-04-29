@@ -9,14 +9,4 @@ public class Drumstick : MonoBehaviour {
 	}
 
 	public HandType handController = HandType.none; 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 }
